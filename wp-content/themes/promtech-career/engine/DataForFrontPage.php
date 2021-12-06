@@ -1,11 +1,6 @@
 <?
 
 class DataForFrontPage {
-
-    public function __construct()
-    {
-    }
-
     public function slider() 
     {
         return new Slider();
@@ -14,5 +9,10 @@ class DataForFrontPage {
     public function job() 
     {
         return new Job();
+    }
+
+    public function search() 
+    {
+        return new Search();
     }
 }

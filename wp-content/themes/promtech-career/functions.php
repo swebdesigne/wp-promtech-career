@@ -122,22 +122,34 @@ add_action( 'widgets_init', 'promtech_widgets_init' );
 function promtech_scripts() {
 	wp_enqueue_style( 'promtech-style', get_stylesheet_uri() );
 
-	wp_enqueue_style( 'promtech-style', get_template_directory_uri() . '/assets/css/style.css', array(), '20151215', true );
+	wp_enqueue_style( 'promtech-font-style', get_template_directory_uri() . '/assets/fonts/font.css', array(), '20151215', true );
+	wp_enqueue_style( 'promtech-slick_slider-style', get_template_directory_uri() . '/assets/libs/slick/slick.min.css', array(), '20151215', true );
+	wp_enqueue_style( 'promtech-slick_slider-theme', get_template_directory_uri() . '/assets/libs/slick/slick-theme.min.css', array(), '20151215', true );
+	wp_enqueue_style( 'promtech-slick_slider-theme', get_template_directory_uri() . '/assets/libs/slick/slick-theme.min.css', array(), '20151215', true );
+	wp_enqueue_style( 'promtech-fancybox-style', get_template_directory_uri() . '/assets/libs/fancybox/jquery.fancybox.min.css', array(), '20151215', true );
+	wp_enqueue_style( 'promtech-style', get_template_directory_uri() . '/assets/css/main.css', array(), '20151215', true );
 	
-	wp_enqueue_style( 'promtech-bootstrap-map', get_template_directory_uri() . '/assets/css/bootstrap.css.map', array(), '20151215', false );
-	wp_enqueue_style( 'promtech-bootstrap', get_template_directory_uri() . '/assets/css/bootstrap.min.css', array(), '20151215', false );
-	wp_enqueue_style( 'promtech-bootstrap-theme', get_template_directory_uri() . '/assets/css/bootstrap-theme.css', array(), '20151215', false );
+	wp_enqueue_style( 'promtech-bootstrap', get_template_directory_uri() . '/assets/libs/bootstrap/css/bootstrap.min.css', array(), '20151215', false );
+	
+	wp_deregister_script( 'jquery' );
+    wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.js', array(), '' );
+    wp_enqueue_script( 'jquery', '', '', false, true);
+
+    wp_enqueue_script( 'promtech-bootstrap', get_template_directory_uri() . '/assets//libs/jquery-3.3.1.min.js', array(), false, true );
+	wp_enqueue_script( 'promtech-migrate', get_template_directory_uri() . '/assets/libs/jquery-migrate-3.0.1.min.js', array(), false, true );
+	wp_enqueue_script( 'promtech-inputmask', get_template_directory_uri() . '/assets/libs/jquery.inputmask.min.js', array(), false, true );
+	wp_enqueue_script( 'promtech-marquee', get_template_directory_uri() . '/assets/libs/marque/jquery.marquee.min.js', array(), false, true );
+	wp_enqueue_script( 'promtech-slick', get_template_directory_uri() . '/assets/libs/slick/slick.min.js', array(), false, true );
+	wp_enqueue_script( 'promtech-fancybox', get_template_directory_uri() . '/assets/libs/fancybox/jquery.fancybox.min.js', array(), false, true );
+	wp_enqueue_script( 'promtech-bundle', get_template_directory_uri() . '/assets/libs/bootstrap/js/bootstrap.bundle.min.js', array(), false, true );
+	wp_enqueue_script( 'promtech-easypiechart', get_template_directory_uri() . '/assets/libs/easy-pie-chart/jquery.easypiechart.min.js', array(), false, true );
+	wp_enqueue_script( 'promtech-main', get_template_directory_uri() . '/assets/js/main.js', array(), false, true );
 	
     wp_enqueue_script('promtech-html5shiv', 'https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js');
     wp_script_add_data('promtech-html5shiv', 'conditional', 'lt IE 9');
     wp_enqueue_script('promtech-respond', 'https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js');
     wp_script_add_data('promtech-respond', 'conditional', 'lt IE 9');
 	
-    wp_deregister_script( 'jquery' );
-    wp_register_script( 'jquery', get_template_directory_uri() . '/assets/js/jquery.js', array(), '' );
-    wp_enqueue_script( 'jquery', '', '', false, true);
-	
-    wp_enqueue_script( 'promtech-bootstrap', get_template_directory_uri() . '/assets/js/bootstrap.min.js', array(), '20151215', true );
 }
 add_action( 'wp_enqueue_scripts', 'promtech_scripts' );
 
@@ -438,3 +450,84 @@ function register_group_post_type_brands() {
   
   /* =============================== ADD COMPANY END =============================== */ 
   
+
+
+  function register_group_post_type_city() {
+	  
+	// список параметров: wp-kama.ru/function/get_taxonomy_labels
+	register_taxonomy( 'region', [ 'city' ], [
+		'label'                 => '', // определяется параметром $labels->name
+		'labels'                => [
+			'name'              => 'Регионы',
+			'singular_name'     => 'Регион',
+			'search_items'      => 'Найти регион',
+			'all_items'         => 'Все регионы',
+			'view_item '        => 'Просмотреть регион',
+			'parent_item'       => 'Родительский регион',
+			'parent_item_colon' => 'Родительский регион:',
+			'edit_item'         => 'Править регион',
+			'update_item'       => 'Обновить регион',
+			'add_new_item'      => 'Добавить новый регион',
+			'new_item_name'     => 'Имя нового региона',
+			'menu_name'         => 'Регион',
+			'back_to_items'     => '← Назад',
+		],
+		'description'           => '', // описание таксономии
+		'public'                => true,
+		// 'publicly_queryable'    => null, // равен аргументу public
+		// 'show_in_nav_menus'     => true, // равен аргументу public
+		// 'show_ui'               => true, // равен аргументу public
+		// 'show_in_menu'          => true, // равен аргументу show_ui
+		// 'show_tagcloud'         => true, // равен аргументу show_ui
+		// 'show_in_quick_edit'    => null, // равен аргументу show_ui
+		'hierarchical'          => false,
+
+		'rewrite'               => true,
+		//'query_var'             => $taxonomy, // название параметра запроса
+		'capabilities'          => array(),
+		'meta_box_cb'           => null, // html метабокса. callback: `post_categories_meta_box` или `post_tags_meta_box`. false — метабокс отключен.
+		'show_admin_column'     => false, // авто-создание колонки таксы в таблице ассоциированного типа записи. (с версии 3.5)
+		'show_in_rest'          => null, // добавить в REST API
+		'rest_base'             => null, // $taxonomy
+		// '_builtin'              => false,
+		//'update_count_callback' => '_update_post_term_count',
+	] );
+	// Слайдер - тип записи
+	register_post_type('city', array(
+	  'label'         => 'Города',
+	  'labels'        => array(
+	  'name'          => 'Города',
+	  'singular_name' => 'Города',
+	  'menu_name'     => 'Города',
+	  'all_items'     => 'Все Города',
+	  'add_new'       => 'Добавить город',
+	  'add_new_item'  => 'Добавить новый город',
+	  'edit'          => 'Редактировать',
+	  'edit_item'     => 'Редактировать город',
+	  'new_item'      => 'Новая компания',
+	  ),
+	  'description'         => 'Компании',
+	  'public'              => true,
+	  'publicly_queryable'  => true,
+	  'show_ui'             => true,
+	  'show_in_rest'        => false,
+	  'rest_base'           => '',
+	  'show_in_menu'        => true,
+	  'exclude_from_search' => false,
+	  'capability_type'     => 'post',
+	  'map_meta_cap'        => true,
+	  'menu_icon'           => 'dashicons-format-image',
+	  'hierarchical'        => false,
+	  'rewrite'             => false,
+	  'has_archive'         => false,
+	  'query_var'           => true,
+	  'supports'            => array('title')
+	  ) );
+  }
+  add_action( 'init', 'register_group_post_type_city' );
+  function wpschool_register_taxonomy_city() {
+	register_taxonomy_for_object_type( 'region', 'city' );
+  }
+  add_action( 'init', 'wpschool_register_taxonomy_city' );
+
+  /* =============================== ADD COMPANY END =============================== */ 

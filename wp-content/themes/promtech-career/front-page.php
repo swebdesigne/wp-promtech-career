@@ -5,12 +5,13 @@ $data = new DataForFrontPage();
 // bloginfo("name");
 // bloginfo("description");
 
-/* ======== ВЫВОД СЛАЙДЕРА ======== */
+/* ======== СЛАЙДЕР ======== */
+$data->slider()->template('home_slider', '', 1);
 
-$data->slider()->template('home_slider', '', '');
+/* ======== ПОИСК ======== */
+$data->search()->template('searchform', '', '');
 
-/* ======== ВЫВОД ВАКАНСИЙ ======== */
-
+/* ======== ВАКАНСИИ ======== */
 $data->job()->template('job', 'all_job', '');
 
 

@@ -1,21 +1,5 @@
-/*!
-Theme Name: promtech-career.ru
-Theme URI: http://underscores.me/
-Author: Sivolobov Igor
-Author URI: promtech-career.ru
-Description: Description
-Version: 1.0.0
-*/
-
-
-/* ------------------ */
-/* IMPORT */
-/* ------------------ */
 @import url("../fonts/font.css");
 @import url("../icon/style.css");
-/* ------------------ */
-/* COLORS */
-/* ------------------ */
 * {
   margin: 0;
   padding: 0;
@@ -66,9 +50,6 @@ body img {
   max-width: 100%;
   max-height: 100%;
 }
-/* ------------------ */
-/* ELEMENTS */
-/* ------------------ */
 .orange-btn {
   font-weight: 800;
   font-size: 14px;
@@ -150,21 +131,36 @@ body img {
   text-decoration: underline;
   text-decoration-style: dashed;
   position: relative;
-  padding-left: 40px;
-  color: #EF7F1A;
+  padding-left: 60px;
+  line-height: 40px;
+  color: #21415A;
 }
 .chevron-link:before {
+  color: #EF7F1A;
   position: absolute;
   font-family: 'icomoon' !important;
   font-style: normal;
-  font-weight: normal;
+  font-weight: bold;
   font-variant: normal;
   text-transform: none;
   content: '\e900';
+  left: 0;
+  transform: rotate(-90deg);
+  font-size: 12px;
+  width: 40px;
+  height: 40px;
+  border: 4px solid #EF7F1A;
+  border-radius: 100%;
+  line-height: 36px;
+  text-align: center;
 }
-/* ------------------ */
-/* WRAPPER */
-/* ------------------ */
+.chevron-link:hover {
+  color: #EF7F1A;
+  text-decoration-style: dashed;
+}
+.chevron-link:hover:before {
+  border-color: #EF7F1A;
+}
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -176,18 +172,11 @@ body img {
 .footer {
   flex: 0 0 auto;
 }
-/* ------------------ */
-/* HEADER */
-/* ------------------ */
 .header {
   padding: 20px 0 40px;
 }
 .header .logo img {
   height: 40px;
-}
-/* HEADER :: MENU */
-.main-menu .nav-item {
-  /* HEADER :: SUBMENU */
 }
 .main-menu .nav-item + .nav-item {
   margin-left: 20px;
@@ -253,12 +242,6 @@ body img {
   background: transparent;
   color: #EF7F1A;
 }
-/* ------------------ */
-/* END HEADER */
-/* ------------------ */
-/* ------------------ */
-/* FOOTER */
-/* ------------------ */
 .footer {
   flex: 0 0 auto;
   z-index: 10;
@@ -269,13 +252,102 @@ body img {
   border-top: 1px solid #E1ECF5;
   padding-top: 60px;
 }
-/* ------------------ */
-/* END FOOTER */
-/* ------------------ */
-/* ------------------ */
-/* INDEX */
-/* ------------------ */
-/* INDEX :: SLIDER */
+.footer .footer-col.col-politics .footer-col-bottom .copyright {
+  display: flex;
+  align-items: center;
+}
+.footer .footer-col.col-politics .footer-col-bottom .copyright .copy p {
+  margin-bottom: 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+}
+.footer .footer-col.col-politics .footer-col-bottom .copyright .politics {
+  margin-left: 30px;
+}
+.footer .footer-col.col-politics .footer-col-bottom .copyright .politics a {
+  margin-bottom: 0;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #21415A;
+  text-decoration: underline;
+  text-decoration-style: dashed;
+}
+.footer .footer-col.col-politics .footer-col-bottom .copyright .politics a:hover,
+.footer .footer-col.col-politics .footer-col-bottom .copyright .politics a:focus {
+  color: #EF7F1A;
+}
+.footer .footer-col.col-contact .footer-contacts li + li {
+  margin-top: 20px;
+}
+.footer .footer-col.col-contact .footer-contacts .footer-icon {
+  margin-right: 10px;
+  margin-top: 5px;
+  color: #EF7F1A;
+}
+.footer .footer-col.col-contact .footer-contacts .footer-contact b {
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 20px;
+}
+.footer .footer-col.col-contact .footer-contacts .footer-contact a {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #21415A;
+  text-decoration: none;
+}
+.footer .footer-col.col-contact .footer-contacts .footer-contact a:hover,
+.footer .footer-col.col-contact .footer-contacts .footer-contact a:focus {
+  text-decoration: none;
+  color: #EF7F1A;
+}
+.footer .footer-col.col-contact .footer-contacts .footer-contact p {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+}
+.subscribe h4 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 0;
+}
+.subscribe .subscribe-form {
+  margin-top: 30px;
+}
+.subscribe .subscribe-form .subscribe-input {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  padding: 10px 25px;
+  border: 2px solid #D9E6F1;
+  border-radius: 40px;
+}
+.subscribe .subscribe-form .subscribe-btn {
+  margin-left: 20px;
+}
+.socials {
+  margin-top: 30px;
+}
+.socials h4 {
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 0;
+}
+.socials .socials-list {
+  margin-top: 15px;
+}
+.socials .socials-list .social:hover,
+.socials .socials-list .social:focus {
+  text-decoration: none;
+  color: #E1ECF5;
+}
+.socials .socials-list .social span {
+  font-size: 30px;
+}
 .index-slider {
   position: relative;
 }
@@ -323,7 +395,7 @@ body img {
   bottom: 0;
   left: 0;
   right: 0;
-  background: url('../promtech-career/images/cloud.png');
+  background: url('../cloud.png');
   background-size: 100% 300px;
   height: 300px;
   z-index: 99999;
@@ -332,7 +404,6 @@ body img {
 .main-slider-item img {
   width: 100%;
 }
-/* INDEX :: SEARCH */
 .index-search {
   position: relative;
   margin-top: -104px;
@@ -371,7 +442,6 @@ body img {
 .index-search .orange-btn {
   flex: 2;
 }
-/* INDEX :: CAREER */
 .index-career .careers-filter {
   list-style: none;
   padding: 0;
@@ -527,7 +597,6 @@ body img {
 .careers-element-container .career-element-bottom .career-bottom {
   justify-content: space-between;
 }
-/* INDEX :: DIGIT */
 .index-digit {
   margin-top: 150px;
   position: relative;
@@ -581,7 +650,6 @@ body img {
   right: 0;
   margin: 10px 0 0 0;
 }
-/* INDEX :: YOUTUBE */
 .index-youtube {
   margin-top: 200px;
 }
@@ -623,13 +691,6 @@ body img {
   clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 0% 100%);
   height: 460px;
 }
-/* ------------------ */
-/* END INDEX */
-/* ------------------ */
-/* ------------------ */
-/* ALL */
-/* ------------------ */
-/* ALL :: FAQ */
 .faq-section {
   margin-top: 150px;
 }
@@ -716,11 +777,145 @@ body img {
   line-height: 30px;
   width: 100%;
 }
-/* ALL :: QUESTION */
 .question-section {
   margin-top: 250px;
+  margin-top: 390px;
+  margin-bottom: 310px;
 }
-/* ALL :: SLOGAN */
+.question-section .question-bg {
+  position: relative;
+}
+.question-section .question-bg .question-bg-left {
+  box-shadow: 0px 0px 60px rgba(104, 132, 154, 0.15);
+  border-radius: 100px;
+  width: 50%;
+  height: calc(100% + 280px);
+  position: absolute;
+  top: -140px;
+  padding: 0;
+  left: -70px;
+  background: #fff;
+  z-index: 1000;
+}
+.question-section .question-bg .question-bg-right {
+  z-index: 999;
+  position: absolute;
+  width: 100%;
+  background: url('../img/bg/bg2.svg');
+  height: calc(100% + 280px);
+  background-repeat: no-repeat;
+  background-position-x: right;
+  background-size: cover;
+  top: -140px;
+  right: 0;
+}
+.question-section .question-bg .question-content {
+  z-index: 1001;
+}
+.question-section .question-about-col h4 {
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 50px;
+  margin-bottom: 0;
+}
+.question-section .question-about-col p {
+  font-weight: normal;
+  font-size: 32px;
+  line-height: 40px;
+  color: #4E6272;
+  margin-bottom: 0;
+  margin-top: 60px;
+}
+.question-section .question-about-col .question-about-contacts {
+  margin-top: 74px;
+}
+.question-section .question-about-col .question-about-contacts li + li {
+  margin-top: 60px;
+}
+.question-section .question-about-col .question-about-contacts span {
+  font-size: 40px;
+}
+.question-section .question-about-col .question-about-contacts .question-contact {
+  margin-left: 20px;
+}
+.question-section .question-about-col .question-about-contacts .question-contact b {
+  font-weight: bold;
+  font-size: 36px;
+  line-height: 40px;
+  margin-bottom: 20px;
+}
+.question-section .question-about-col .question-about-contacts .question-contact a {
+  font-weight: normal;
+  font-size: 24px;
+  line-height: 40px;
+  color: #21415A;
+}
+.question-section .question-about-col .question-about-links {
+  display: flex;
+  flex-flow: column;
+  margin-top: 120px;
+}
+.question-section .question-about-col .question-about-links .chevron-link + .chevron-link {
+  margin-top: 40px;
+}
+.question-section .question-form-container {
+  padding-top: 160px;
+}
+.question-section .question-form-container h4 {
+  font-weight: bold;
+  font-size: 48px;
+  line-height: 50px;
+  margin-bottom: 20px;
+}
+.form-row {
+  margin-top: 50px;
+  flex-wrap: nowrap;
+}
+.form-row input[type=text],
+.form-row input[type=email],
+.form-row input[type=file] {
+  background: #fff;
+  border: 4px solid #D9E6F1;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 30px;
+  padding: 15px 25px;
+  border-radius: 40px;
+}
+.form-row .form-item {
+  width: 50%;
+}
+.form-row .form-item + .form-item {
+  margin-left: 30px;
+}
+.form-row .orange-btn {
+  padding: 20px 40px;
+  margin-left: 0;
+}
+.form-row.right-content {
+  display: flex;
+  justify-content: flex-end;
+}
+.form-row.col-submit {
+  display: flex;
+  align-items: center;
+}
+.form-row.col-submit label {
+  margin: 0;
+}
+.form-row.col1 .form-item {
+  width: 100%;
+}
+.form-row label {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #68849A;
+  margin-bottom: 20px;
+}
+.form-row label input[type=checkbox] {
+  margin-right: 10px;
+}
 .slogan {
   margin-top: 170px;
 }
@@ -730,19 +925,4 @@ body img {
   font-size: 48px;
   line-height: 50px;
 }
-/* ------------------ */
-/* END ALL */
-/* ------------------ */
-/* ------------------ */
-/* INNER */
-/* ------------------ */
-/* ------------------ */
-/* END INNER */
-/* ------------------ */
-/* ------------------ */
-/* BREADCRUMBS */
-/* ------------------ */
-/* ------------------ */
-/* END BREADCRUMBS */
-/* ------------------ */
 /*# sourceMappingURL=main.css.map */

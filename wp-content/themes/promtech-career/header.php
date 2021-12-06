@@ -1,4 +1,9 @@
 
+<?php 
+	get_template_part("engine"); 
+	$menu = new Menu();
+?>
+
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -7,27 +12,23 @@
 	<link rel="profile" href="https://gmpg.org/xfn/11">
 	
 	<?php wp_head(); ?>
-	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 </head>
-	
-<?php 
-// spl_autoload_register(function ($class_name) {
-//     include $class_name . '.php';
-// });
-get_template_part("engine"); ?>
+
 <body <?php body_class(); ?>>
-<header>
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-2">
-				<?php the_custom_logo(); ?>
-			</div>
-			<div class="col-lg-8">
-				<nav><?php wp_nav_menu(['theme-location' => 'Header menu', 'container' => false, 'menu_class' => 'menu_header']);?></nav>
-			</div>
-			<div class="col-lg-2">заказать звонок</div>
-		</div>
-	</div>
-</header>
-
-
+	<div class="wrapper">
+		<div class="content">
+			<header class="header">
+				<div class="container">
+					<div class="d-flex justify-content-between align-items-center">
+						<div class="logo">
+							<?php the_custom_logo(); ?>
+						</div>
+						<?php $menu->template("header_menu", '', ''); ?>
+						<div class="header-btn">
+							<a href="#" class="btn orange-btn">Отправить резюме</a>
+						</div>
+					</div>
+				</div>
+			</header>
+			<main <?if(esc_url( home_url( '/' ) ) != get_permalink()){?> class="inner" <?}?>>
