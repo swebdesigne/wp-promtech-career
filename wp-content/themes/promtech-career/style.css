@@ -16,3 +16,8 @@ body {
 .menu_header li {
     display: inline-block;
 }
+
+.home-slider img {
+    width: 100%;
+    height: auto;
+}

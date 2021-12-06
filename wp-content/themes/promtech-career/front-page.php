@@ -1,13 +1,33 @@
-<?php get_header(); ?>
+<?php 
+get_header();
+$data = new DataForFrontPage();
 
-<?php if (have_posts()) : while(have_posts()) : the_post() ?>
-<?php the_content(); ?>
-<?php endwhile; ?>
-<!-- post navigation -->
-<?php else: ?>
-<!-- not posts found -->
-<?php endif; ?>
+// bloginfo("name");
+// bloginfo("description");
+
+/* ======== ВЫВОД СЛАЙДЕРА ======== */
+
+$data->slider()->template('home_slider', '', '');
+
+/* ======== ВЫВОД ВАКАНСИЙ ======== */
+
+$data->job()->template('job', 'all_job', '');
 
 
 
-<?php get_footer(); ?>
+
+get_footer();
+
+
+function mdd($arr) {
+    echo "start =============== start";
+    echo "<pre>";
+    print_r($arr);
+    die('end =============== end');
+}
+function md($arr) {
+    echo "start =============== start";
+    echo "<pre>";
+    print_r($arr);
+    echo 'end =============== end';
+}
