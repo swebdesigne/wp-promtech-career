@@ -10,6 +10,7 @@ return array(
     'AdminCompany' => $baseDir . '/engine/settings_admin_panel/AdminCompany.php',
     'AdminFAQ' => $baseDir . '/engine/settings_admin_panel/AdminFAQ.php',
     'AdminInterview' => $baseDir . '/engine/settings_admin_panel/AdminInterview.php',
+    'AdminJob' => $baseDir . '/engine/settings_admin_panel/AdminJob.php',
     'AdminPhoto' => $baseDir . '/engine/settings_admin_panel/AdminPhoto.php',
     'AdminRegion' => $baseDir . '/engine/settings_admin_panel/AdminRegion.php',
     'AdminSlider' => $baseDir . '/engine/settings_admin_panel/AdminSlider.php',

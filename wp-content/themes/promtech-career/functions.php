@@ -181,53 +181,6 @@ if ( defined( 'JETPACK__VERSION' ) ) {
 	require get_template_directory() . '/inc/jetpack.php';
 }
 
-
-/* =============================== ADD SLIDER FOR HOME PAGE END =============================== */ 
-
-/* =============================== ADD JOBS =============================== */ 
-
-function wpschool_create_jobs_posttype(){
-	register_post_type('job', array(
-		'labels'             => array(
-		'name'               => 'Вакансии', // Основное название типа записи
-		'singular_name'      => 'Вакансия', // отдельное название записи типа Book
-		'add_new'            => 'Добавить вакансию',
-		'add_new_item'       => 'Добавить новую вакансию',
-		'edit_item'          => 'Редактировать вакансию',
-		'new_item'           => 'Новая вакансия',
-		'view_item'          => 'Посмотреть вакансию',
-		'search_items'       => 'Найти вакансию',
-		'not_found'          => 'Вакансий не найдено',
-		'not_found_in_trash' => 'В корзине вакансий не найдено',
-		'parent_item_colon'  => '',
-		'menu_name'          => 'Вакансии'
-
-		  ),
-		'public'             => true,
-		'publicly_queryable' => true,
-		'show_ui'            => true,
-		'show_in_menu'       => true,
-		'query_var'          => true,
-		'rewrite'            => true,
-		'capability_type'    => 'post',
-		'has_archive'        => true,
-		'hierarchical'       => false,
-		'menu_position'      => null,
-		'supports'           => array('title','editor','author','thumbnail','excerpt','comments','trackbacks')
-	) );
-}
-add_action( 'init', 'wpschool_create_jobs_posttype' );
-
-function wpschool_register_taxonomy() {
-	register_taxonomy_for_object_type( 'post_tag', 'job' );
-    register_taxonomy_for_object_type( 'category', 'job' );
-}
-add_action( 'init', 'wpschool_register_taxonomy' );
-
-/* =============================== ADD END =============================== */ 
-
-/* =============================== CREATE CUSTOMER FIELDS =============================== */ 
-
 function my_meta_box() {  
     add_meta_box(  
         'my_meta_box', // Идентификатор(id)
@@ -378,3 +331,12 @@ add_action('save_post', 'save_my_meta_fields'); // Запускаем функц
 new SettingsAdminPanel();
 // убираем редактор Gutenberg
 add_filter( 'use_block_editor_for_post_type', '__return_false', 100 ); 
+
+// отключаем автообновлние плагина Custom Post Type UI
+add_filter( 'site_transient_update_plugins', 'filter_plugin_updates' );
+function filter_plugin_updates( $value ) {
+	unset( $value->response['advanced-custom-fields-pro/acf.php'] );
+	return $value;
+}
+
+

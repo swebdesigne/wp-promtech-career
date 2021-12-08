@@ -11,6 +11,7 @@ class ComposerStaticInit5950163e618e6426b698457de8d6bd76
         'AdminCompany' => __DIR__ . '/../..' . '/engine/settings_admin_panel/AdminCompany.php',
         'AdminFAQ' => __DIR__ . '/../..' . '/engine/settings_admin_panel/AdminFAQ.php',
         'AdminInterview' => __DIR__ . '/../..' . '/engine/settings_admin_panel/AdminInterview.php',
+        'AdminJob' => __DIR__ . '/../..' . '/engine/settings_admin_panel/AdminJob.php',
         'AdminPhoto' => __DIR__ . '/../..' . '/engine/settings_admin_panel/AdminPhoto.php',
         'AdminRegion' => __DIR__ . '/../..' . '/engine/settings_admin_panel/AdminRegion.php',
         'AdminSlider' => __DIR__ . '/../..' . '/engine/settings_admin_panel/AdminSlider.php',

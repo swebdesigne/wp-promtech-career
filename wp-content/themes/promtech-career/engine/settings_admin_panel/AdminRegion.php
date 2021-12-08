@@ -55,7 +55,7 @@ class AdminRegion {
             'name'          => 'Города',
             'singular_name' => 'Города',
             'menu_name'     => 'Города',
-            'all_items'     => 'Все Города',
+            'all_items'     => 'Все города',
             'add_new'       => 'Добавить город',
             'add_new_item'  => 'Добавить новый город',
             'edit'          => 'Редактировать',

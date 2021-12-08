@@ -12,6 +12,7 @@ class SettingsAdminPanel {
         new AdminPhoto();
         new AdminVideo();
         new AdminFAQ();
+        new AdminJob();
     }
 
 }
