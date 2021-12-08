@@ -1,7 +1,12 @@
 <?
-
 class Slider extends ModalSlider {
-    private $home_slider;
+    private $slider;
+    private $dir_template = 'engine/view/slider/';
+
+    public function __construct($initMethod, $param)
+    {
+        $this->$initMethod($param);
+    }
 
     public function getSlider($name) 
     {
@@ -15,16 +20,12 @@ class Slider extends ModalSlider {
 
     private function home_slider($param = -1) 
     {
-        $this->home_slider = $this->db_home_slider($param);
-        foreach($this->home_slider as $k => $post) {
-            $this->home_slider[$k]->slideURL = get_the_post_thumbnail_url($post->ID);
+        $this->slider = $this->db_home_slider($param);
+        foreach($this->slider as $k => $post) {
+            $this->slider[$k]->slideURL = get_the_post_thumbnail_url($post->ID);
         }
         wp_reset_postdata();
     }
-
-    public function template($tamplate, $method, $param) 
-    {
-        if (empty($this->$tamplate)) (!empty($method)) ? $this->$method($param) : $this->$tamplate($param);
-        get_template_part('engine/view/slider/'.$tamplate, 'single', $this->$tamplate);
-    }
+    
+    public function template($tamplate) { Tools::template($this->dir_template.$tamplate, $this->menu); }
 }

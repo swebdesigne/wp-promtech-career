@@ -1,0 +1,9 @@
+{
+    "autoload": {
+      "classmap": [
+        "engine",
+        "engine/modal/",
+        "engine/settings_admin_panel/"
+      ]
+    }
+  }

@@ -1,7 +1,8 @@
 <?
 
 class Search extends ModalSearch {
-    private $job_search;
+    private $search;
+    private $dir_template = 'engine/view/search/';
 
     public function getSearch($name) 
     {
@@ -17,11 +18,9 @@ class Search extends ModalSearch {
      * для пользовательского поиска
     */
     public function job_search($param) {
-        $this->job_search = $this->db_job_search($param);
+        $this->search = $this->db_job_search($param);
     }
 
-    public function template($tamplate) {
-        get_template_part('engine/view/search/'.$tamplate);
-    }
+    public function template($tamplate) { Tools::template($this->dir_template.$tamplate, $this->menu); }
 
 }

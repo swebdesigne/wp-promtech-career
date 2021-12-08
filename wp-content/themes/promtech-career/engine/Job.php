@@ -2,9 +2,11 @@
 
 class Job extends ModalJob {
     private $job;
+    private $dir_template = 'engine/view/job/';
 
-    public function __construct() {
-
+    public function __construct($initMethod, $param)
+    {
+        $this->$initMethod($param);
     }
 
     public function getJob($name) 
@@ -17,7 +19,7 @@ class Job extends ModalJob {
         $this->$name($param);
     }
 
-    public function all_job($param = -1) 
+    private function all_job($param = -1) 
     {
         $this->job = $this->db_job($param);
         foreach($this->job as $k => $post) {
@@ -30,8 +32,5 @@ class Job extends ModalJob {
         wp_reset_postdata();
     }
 
-    public function template($tamplate, $method, $param) {
-        if (empty($this->$tamplate)) (!empty($method)) ? $this->$method($param) : $this->$tamplate($param);
-        get_template_part('engine/view/job/'.$tamplate, 'single', $this->$tamplate);
-    }
+    public function template($tamplate) { Tools::template($this->dir_template.$tamplate, $this->menu); }
 }

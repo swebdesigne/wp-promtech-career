@@ -1,7 +1,6 @@
 
 <?php 
-	get_template_part("engine"); 
-	$menu = new Menu();
+	$data = new Main();
 ?>
 
 <!doctype html>
@@ -24,7 +23,7 @@
 						<div class="logo">
 							<?php the_custom_logo(); ?>
 						</div>
-						<?php $menu->template("header_menu", '', ''); ?>
+						<?php $data->init("Menu", 'header_menu')->template("header_menu"); ?>
 						<div class="header-btn">
 							<a href="#" class="btn orange-btn">Отправить резюме</a>
 						</div>

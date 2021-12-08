@@ -1,10 +1,12 @@
 <?
 
-class  Menu extends ModaMenu {
-    private $header_menu = [];
+class Menu extends ModaMenu {
+    private $menu;
+    private $dir_template = 'engine/view/menu/';
 
-    public function __construct() {
-
+    public function __construct($initMethod, $param)
+    {
+        $this->$initMethod($param);
     }
 
     public function getMenu($name) 
@@ -20,19 +22,16 @@ class  Menu extends ModaMenu {
     /**
      * метод формирует массив для меню в header 
     */
-    public function header_menu($param) {
-        $this->header_menu = $this->db_header_menu($param);
+    public function header_menu($param = -1) {
+        $this->menu = $this->db_header_menu($param);
         $currenturl = get_permalink();
-        foreach ($this->header_menu as $k => $cat) {
-            $this->header_menu[$k]->link = get_page_link($cat->ID);
-            if ($this->header_menu[$k]->link == $currenturl)
-                $this->header_menu[$k]->class = 'active';
-            $this->header_menu[$k]->title = $cat->post_title;
+        foreach ($this->menu as $k => $cat) {
+            $this->menu[$k]->link = get_page_link($cat->ID);
+            if ($this->menu[$k]->link == $currenturl)
+                $this->menu[$k]->class = 'active';
+            $this->menu[$k]->title = $cat->post_title;
         }
     }
 
-    public function template($tamplate, $method, $param) {
-        if (empty($this->$tamplate)) (!empty($method)) ? $this->$method($param) : $this->$tamplate($param);
-        get_template_part('engine/view/menu/'.$tamplate, 'single', $this->$tamplate);
-    }
+    public function template($tamplate) { Tools::template($this->dir_template.$tamplate, $this->menu); }
 }
