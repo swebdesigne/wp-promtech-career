@@ -21,6 +21,5 @@ class Search extends ModalSearch {
         $this->search = $this->db_job_search($param);
     }
 
-    public function template($tamplate) { Tools::template($this->dir_template.$tamplate, $this->menu); }
-
+    public function view($tamplate) { Tools::view($this->dir_template.$tamplate, $this->menu); }
 }

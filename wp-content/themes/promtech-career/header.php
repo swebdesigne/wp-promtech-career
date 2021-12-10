@@ -23,7 +23,7 @@
 						<div class="logo">
 							<?php the_custom_logo(); ?>
 						</div>
-						<?php $data->init("Menu", 'header_menu', -1)->template("header_menu"); ?>
+						<?php $data->init("Menu", 'header_menu', -1)->view("header_menu"); ?>
 						<div class="header-btn">
 							<a href="#" class="btn orange-btn">Отправить резюме</a>
 						</div>

@@ -7,9 +7,9 @@ class Tools {
         else throw new \Exception("Файл ".get_stylesheet_directory().'/'.$path." не найден");
     }
 
-    static function template($path, $params) {
+    static function view($path, $params) {
         if (self::checkTemplateExist($path)) 
-        get_template_part($path, 'single', $params);
+            get_template_part($path, 'single', $params);
     }
 
     static function mdd($arr) {

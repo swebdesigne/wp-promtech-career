@@ -36,8 +36,8 @@ class Company extends ModalCompany {
         return $this->db_company($param);
     }
 
-    public function template($tamplate) 
+    public function view($tamplate) 
     { 
-        Tools::template($this->dir_template.$tamplate, $this->company); 
+        Tools::view($this->dir_template.$tamplate, $this->company); 
     }
 }

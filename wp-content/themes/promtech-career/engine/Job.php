@@ -43,5 +43,5 @@ class Job extends ModalJob {
         $this->category = $this->db_taxonomy_job('all');
     }
 
-    public function template($tamplate) { Tools::template($this->dir_template.$tamplate, $this->job); }
+    public function view($tamplate) { Tools::view($this->dir_template.$tamplate, $this->job); }
 }

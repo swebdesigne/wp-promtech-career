@@ -7,9 +7,9 @@ get_header();
  * вторым указываем метод который должен отработать
  * в template() передается шаблон
 */
-$data->init('Slider', 'home_slider', 1)->template('home_slider');
-$data->init('Search', 'job_search')->template('searchform');
-$data->init('Job', 'job', -1)->template('job');
-$data->init('Job', 'job_category', -1)->template('job');
+$data->init('Slider', 'home_slider', 1)->view('home_slider');
+$data->init('Search', 'job_search')->view('searchform');
+$data->init('Job', 'job', -1)->view('job');
+$data->init('Job', 'job_category', -1)->view('job');
 
 get_footer();

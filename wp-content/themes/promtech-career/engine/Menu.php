@@ -28,7 +28,7 @@ class Menu extends ModaMenu {
      * 37 - меню Компаний
     */
     private function extraSubMenu($sub_menu, $idCatPosts) {
-        $extra_sub_menu = $sub_menu->__list();
+        $extra_sub_menu = $sub_menu->__list(-1);
         foreach($extra_sub_menu as $key => $item) {
             $extra_sub_menu[$key]->post_parent = $idCatPosts;
             $extra_sub_menu[$key]->link = get_page_link($item->ID);
@@ -53,6 +53,8 @@ class Menu extends ModaMenu {
         $this->menu = $parents_arr[0];
         $this->generateElemTree($this->menu, $parents_arr);
     }
+// Стажировки и практики
+
 
    /**
      * метод подменю для главного меню в шапке
@@ -80,5 +82,5 @@ class Menu extends ModaMenu {
         }
     }
 
-    public function template($tamplate) { Tools::template($this->dir_template.$tamplate, $this->menu); }
+    public function view($tamplate) { Tools::view($this->dir_template.$tamplate, $this->menu); }
 }
