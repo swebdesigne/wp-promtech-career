@@ -1,0 +1,603 @@
+// ------------------
+// COLORS
+// ------------------
+@border: #D9E6F1;
+@white: #fff;
+@gray: #E1ECF5;
+@darkgray: #4E6272;
+@black: #21415A;
+@orange: #EF7F1A;
+@graymid: #68849A;
+@text: @black;
+@lightgray: #BDD0DF;
+@darkblue: #56738A;
+@dark: #222222;
+
+// ------------------
+// VACANCY INFO
+// ------------------
+
+// .container {
+//     max-width: 1400px;
+// }
+
+.main-photo {
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 40px;
+    background: url(../img/vacancy-info/main-banner.png) center no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    padding: 40px 40px 70px 132px;
+    overflow: hidden;
+}
+
+.main-photo2 {
+    background: url(../img/about/promtex_dubna.png) center no-repeat!important;
+    background-size: cover!important;
+}
+
+.main-photo3 {
+    background: url(../img/about/dubnenskiy-zavod_big.png) center no-repeat!important;
+    background-size: cover!important;
+}
+
+.main-photo__logo {
+    margin-left: auto;
+    margin-bottom: 16vw;
+}
+
+.photo-title__text {
+    max-width: 690px;
+    position: relative;
+    font-family: Montserrat;
+    font-weight: 800;
+    font-size: 56px;
+    line-height: 60px;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    color: @white;
+}
+
+.photo-title__text:before {
+    content: '';
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    background: url(../plane.svg);
+    left: -55px;
+    top: 20px;
+}
+
+.requirements {
+    padding-top: 80px;
+    &__wrapper {
+        padding-left: 70px;
+    }
+    &__title {
+        margin-bottom: 40px;
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 40px;
+        color: @black;
+    }
+    &__desc {
+        margin-bottom: 80px;
+        font-family: Montserrat;
+        font-size: 16px;
+        line-height: 20px;
+        color: @black;
+        ul {
+            margin-left: 15px;
+        }
+        li {
+            margin-bottom: 20px;
+        }
+        li::marker {
+            color: @orange;
+        }
+    }
+    &__btn {
+        margin-top: 20px;
+        margin-bottom: 70px;
+        padding: 20px 40px;
+        width: 291px;
+        height: 60px;
+        font-family: Montserrat;
+        font-weight: 900;
+        font-size: 18px;
+        line-height: 20px;
+        text-align: center;
+        color: @white;
+    }
+    &__share {
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 30px;
+        align-items: center;
+        color: @black;
+    }
+
+}
+
+.requirements-subtitle {
+    margin-bottom: 10px;
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    color: @black;
+    &__desc {
+        margin-bottom: 30px;
+        font-family: Montserrat;
+        font-size: 24px;
+        line-height: 30px;
+        color: @black;
+        a {
+            color: @black;
+        }
+    }
+}
+
+.options {
+    float: right;
+    padding-left:120px;
+}
+
+.options2 {
+    padding-left: 0px;
+}
+
+@media (max-width: 1200px) {
+    .options {
+        padding-left: 0px;
+        float: none;
+        margin-bottom: 40px;
+    }
+    .photo-title__text {
+        font-size: 42px;
+        line-height: 46px;
+    }
+    .requirements__wrapper {
+        padding-left: 30px;
+    }
+}
+
+@media (max-width: 490px) {
+    .main-photo {
+        padding-left: 70px;
+        padding-bottom: 40px;
+    }
+    .photo-title__text {
+        font-size: 23px;
+        line-height: 27px;
+    }
+    .requirements__wrapper {
+        padding-left: 30px;
+    }
+}
+
+@media (max-width: 376px) {
+    .main-photo {
+        padding-left: 70px;
+    }
+    .photo-title__text {
+        font-size: 23px;
+        line-height: 27px;
+    }
+    .requirements__wrapper {
+        padding-left: 0px;
+    }
+}
+
+// Modal
+
+.form-style {
+    background: @white;
+    border: 4px solid @border;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    padding: 15px 25px;
+    border-radius: 40px;
+}
+
+.form-row textarea {
+    margin-bottom: 20px;
+}
+
+.modal-header .icon-close {
+    border: none;
+    background-color: @white;
+    color: @orange;
+}
+
+.modal-header .icon-close:hover {
+    color: @graymid;
+}
+
+.modal-dialog {
+    max-width: 750px;
+    padding-top: 20px;
+}
+.modal-content {
+    padding: 0px 40px 20px;
+}
+
+.modal-header {
+    margin-top: 20px;
+    margin-bottom: -60px;
+    border-bottom: unset;
+}
+
+.modal-title {
+    margin-bottom: 40px;
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 40px;
+    color: @black;
+}
+
+#respond_textarea {
+    width: 100%;
+    background: #fff;
+    border: 4px solid #D9E6F1;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    padding: 15px 25px;
+    border-radius: 40px;
+}
+
+#education {
+    background: #fff;
+    border: 4px solid #D9E6F1;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 30px;
+    padding: 15px 25px;
+    border-radius: 40px;
+    cursor: pointer;
+}
+
+.ya-share2__icon {
+    background-color: #ADBDCA;
+}
+
+.ya-share2__container_size_m .ya-share2__badge .ya-share2__icon {
+    width: 30px!important;
+    height: 30px!important;
+}
+
+.ya-share2__container_shape_round.ya-share2__container_size_m .ya-share2__badge .ya-share2__icon:not(.ya-share2__icon_messenger-contact):not(.ya-share2__icon_more):not(.ya-share2__icon_copy) {
+    background-size: 24px 24px!important;
+}
+
+.ya-share2__icon:hover {
+    background-color: @orange;
+}
+
+.ya-share2__link {
+    margin-right: 15px;
+}
+
+// About
+.about {
+    padding-left: 70px;
+    padding-top: 50px;
+    &__slider {
+        cursor: pointer;
+        .main-photo {
+            background: url(../img/about/aerocosmic_systems.png) center no-repeat;
+            background-size: cover;
+            .photo-title__text {
+                max-width: unset;
+            }
+        }
+        .slick-dots {
+            padding-right: 35px;
+            bottom: 34px;
+            text-align: right;
+            li button:before {
+                font-size: 12px;
+            }
+            li button:before {
+                color: rgba(255, 255, 255, 0.4);
+            }
+            li.slick-active button:before {
+                color: @white;
+            }
+            li {
+                margin: 0px 0px;
+            }
+        }
+    }
+    &__title {
+        margin-bottom: 40px;
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 40px;
+        color: @black;
+    }
+    &__desc {
+        margin-bottom: 30px;
+        font-family: Montserrat;
+        font-size: 18px;
+        line-height: 30px;
+        color: @darkgray;
+    }
+    &__youtube {
+        width: 560px;
+        max-width: 100%;
+        iframe {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .about {
+        padding-left: 0px;
+    }
+}
+
+.projects {
+    clear: both;
+    padding-top: 145px;
+    h2 {
+        margin-bottom: 80px;
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 64px;
+        line-height: 70px;
+        align-items: center;
+        text-transform: uppercase;
+        color: @black;
+    }
+    &__items {
+        flex-wrap: wrap;
+        padding-left: 57px;
+        .projects-item {
+            margin-bottom: 70px;
+            margin-right: 20px;
+            &__title {
+                margin-bottom: 20px;
+                font-family: Montserrat;
+                font-weight: bold;
+                font-size: 36px;
+                line-height: 40px;
+                align-items: center;
+                text-transform: uppercase;
+                color: @orange;
+            }
+            &__desc {
+                width: 320px;
+                font-family: Montserrat;
+                font-size: 18px;
+                line-height: 30px;
+                align-items: center;
+                color: @graymid;
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .projects h2 {
+        font-size: 32px;
+        line-height: 38px;
+    }
+}
+
+@media (max-width: 768px) {
+    .projects__items .projects-item__desc {
+        width: unset;
+    }
+}
+
+@media (max-width: 490px) {
+    .projects h2 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+}
+
+.advantages {
+    h2 {
+        margin-top: 80px;
+        margin-bottom: 75px;
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 64px;
+        line-height: 70px;
+        align-items: center;
+        text-transform: uppercase;
+        color: @black;
+    }
+    ul {
+        padding-left: 94px;
+        li {
+            margin-bottom: 35px;
+            font-family: Montserrat;
+            font-size: 36px;
+            line-height: 40px;
+            color: #21415A;
+        }
+        li::marker {
+            font-size: 50px;
+            color: @orange;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .advantages h2 {
+        font-size: 32px;
+        line-height: 38px;
+    }
+}
+
+@media (max-width: 490px) {
+    .advantages h2 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+}
+
+.iampromtex {
+    h2 {
+        margin-top: 150px;
+        margin-bottom: 80px;
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 64px;
+        line-height: 70px;
+        align-items: center;
+        text-transform: uppercase;
+        color: @black;
+    }
+    &__items {
+        flex-wrap: wrap;
+        margin-bottom: -40px;
+        .iampromtex-item {
+            position: relative;
+            margin-right: 40px;
+            margin-bottom: 40px;
+            width: 420px;
+            min-height: 690px;
+            &__img {
+                margin-bottom: 25px;
+                height: 290px;
+                max-width: 100%;
+                border-radius: 20px;
+                overflow: hidden;
+                img {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+            &__title {
+                font-family: Montserrat;
+                font-weight: 800;
+                font-size: 18px;
+                line-height: 30px;
+                align-items: center;
+                color: @black;
+                ul {
+                    margin-bottom: 0px;
+                    padding-left: 27px;
+                    li::marker {
+                        font-size: 32px;
+                        color: @orange;
+                    }
+                }
+            }
+            &__subtitle {
+                padding-left: 26px;
+                margin-bottom: 50px;
+                font-family: Montserrat;
+                font-size: 16px;
+                line-height: 20px;
+                align-items: center;
+                color: @graymid;
+            }
+            &__desc {
+                padding-left: 26px;
+                margin-bottom: 41px;
+                font-family: Montserrat;
+                font-size: 16px;
+                line-height: 30px;
+                align-items: center;
+                color: @darkgray;
+            }
+            &__readmore {
+                position: absolute;
+                padding-left: 26px;
+                bottom: 0;
+                a {
+                    padding-bottom: 5px;
+                    font-family: Montserrat;
+                    font-weight: 800;
+                    font-size: 16px;
+                    line-height: 30px;
+                    align-items: center;
+                    color: @graymid;
+                    border-bottom: 1px dashed @graymid;
+                }
+                a:hover {
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .iampromtex h2 {
+        font-size: 32px;
+        line-height: 38px;
+    }
+}
+
+@media (max-width: 768px) {
+    .iampromtex__items .iampromtex-item {
+        margin-right: 0px;
+        width: unset;
+    }
+}
+
+@media (max-width: 490px) {
+    .iampromtex h2 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+}
+
+.promtex {
+    padding-top: 310px;
+    h2.plane-title {
+        margin-bottom: 80px;
+        font-family: Montserrat;
+        font-weight: bold;
+        font-size: 64px;
+        line-height: 70px;
+        align-items: center;
+        text-transform: uppercase;
+        color: #21415A;
+    }
+    &__items {
+        padding-left: 60px;
+        margin-bottom: 70px;
+        .promtex__item {
+            margin-right: 40px;
+            border-radius: 15px;
+            border: 1px solid @orange;
+            padding: 30px 34px;
+            font-family: Montserrat;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 30px;
+            align-items: center;
+            text-align: center;
+            text-transform: uppercase;
+            color: @black;
+        }
+    }
+}
+
+@media (max-width: 1200px) {
+    .promtex__items {
+        flex-wrap: wrap;
+    }
+    .promtex__item {
+        margin-bottom: 40px;
+    }
+}

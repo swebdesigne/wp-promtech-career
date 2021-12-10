@@ -12,4 +12,18 @@ class Tools {
         get_template_part($path, 'single', $params);
     }
 
+    static function mdd($arr) {
+        echo "start =============== start";
+        echo "<pre>";
+        print_r($arr);
+        die('end =============== end');
+    }
+    
+    static function md($arr) {
+        echo "start =============== start";
+        echo "<pre>";
+        print_r($arr);
+        echo 'end =============== end';
+    }
+
 }

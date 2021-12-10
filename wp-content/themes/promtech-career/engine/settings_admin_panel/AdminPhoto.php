@@ -10,7 +10,7 @@ class AdminPhoto {
         function register_group_post_type_photo() {
             
             // список параметров: wp-kama.ru/function/get_taxonomy_labels
-            register_taxonomy( 'photo_tegs', [ 'city' ], [
+            register_taxonomy( 'photo_tag', [ 'photo' ], [
                 'label'                 => '', // определяется параметром $labels->name
                 'labels'                => [
                     'name'              => 'Фотографии',
@@ -78,7 +78,7 @@ class AdminPhoto {
         }
         add_action( 'init', 'register_group_post_type_photo' );
         function wpschool_register_taxonomy_photo() {
-            register_taxonomy_for_object_type( 'photo_tegs', 'photo' );
+            register_taxonomy_for_object_type( 'photo_tag', 'photo' );
         }
         add_action( 'init', 'wpschool_register_taxonomy_photo' );
     }

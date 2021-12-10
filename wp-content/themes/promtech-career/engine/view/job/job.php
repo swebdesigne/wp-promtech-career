@@ -1,9 +1,11 @@
 <section class="index-career">
     <div class="container">
         <ul class="careers-filter">
-            <li>
-                <a href="javascript:careerFilter('Инженерия')" class="careers-filter-item">Инженерия</a>
-            </li>
+            <?php foreach($args as $arg) : ?>
+                <li>
+                    <a href="javascript:careerFilter('Инженерия')" class="careers-filter-item">Инженерия</a>
+                </li>
+            <?php endforeach; ?>
             <li>
                 <a href="javascript:careerFilter('Производство')" class="careers-filter-item">Производство</a>
             </li>

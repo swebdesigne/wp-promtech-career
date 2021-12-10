@@ -2,10 +2,13 @@
 
 class Menu extends ModaMenu {
     private $menu;
+    private $current_url;
     private $dir_template = 'engine/view/menu/';
 
     public function __construct($initMethod, $param)
-    {
+    {   
+        // удаляем все что между ? и =, нужно для того чтобы очистить ссылку от гэт параметра, чтобы в методе header_menu могли сравнивать ссылки
+        $this->current_url = (preg_match("/\\?.+\\=/m", get_permalink())) ? preg_replace("/\\?.+\\=/m", "", get_permalink())."/" :  get_permalink();
         $this->$initMethod($param);
     }
 
@@ -20,16 +23,60 @@ class Menu extends ModaMenu {
     }
 
     /**
+     * Метод формирует подменю из пользовательских категорий
+     * @param - $idCatPosts - id категории поста:
+     * 37 - меню Компаний
+    */
+    private function extraSubMenu($sub_menu, $idCatPosts) {
+        $extra_sub_menu = $sub_menu->__list();
+        foreach($extra_sub_menu as $key => $item) {
+            $extra_sub_menu[$key]->post_parent = $idCatPosts;
+            $extra_sub_menu[$key]->link = get_page_link($item->ID);
+        }
+        return $extra_sub_menu;
+    }
+
+    /**
      * метод формирует массив для меню в header 
+     * создаем поле $this->menu, которое возвращается как результат работы метода. 
+     * И по умолчанию сохраняем в него элементы самого высокого уровня, которые содержатся в ключе с индексом 0, массива $parents_arr. 
+     * По сути, сейчас мы получили массив элементов верхнего уровня, в который нужно добавить дочерние элементы, непосредственно в ячейку с ключом children.
+     * @param - $param - указывает - какое кол-во элементов необходимо получить из БД
     */
     public function header_menu($param = -1) {
-        $this->menu = $this->db_header_menu($param);
-        $currenturl = get_permalink();
-        foreach ($this->menu as $k => $cat) {
-            $this->menu[$k]->link = get_page_link($cat->ID);
-            if ($this->menu[$k]->link == $currenturl)
-                $this->menu[$k]->class = 'active';
-            $this->menu[$k]->title = $cat->post_title;
+        $category = $this->db_header_menu($param);
+
+        // Добавляем меню Компаний в `О корпорации`
+        $category = array_merge($category, $this->extraSubMenu(new Company, 37));
+
+        foreach($category as $cat) { $parents_arr[$cat->post_parent][$cat->ID] = $cat; }   
+        $this->menu = $parents_arr[0];
+        $this->generateElemTree($this->menu, $parents_arr);
+    }
+
+   /**
+     * метод подменю для главного меню в шапке
+     * @param - $treeElem - ссылка на массив (поле)
+     * @param - в $parents_arr, ключи это идентификаторы родительских элементов
+    */
+    private function generateElemTree(&$treeElem, $parents_arr) {
+        foreach($treeElem as $key => $item) {
+            $treeElem[$key]->link = get_page_link($item->ID);
+
+            if ($treeElem[$key]->link == $this->current_url) { 
+                $treeElem[$key]->class = 'active'; 
+                $parentID = $treeElem[$key]->post_parent; 
+                if($parentID != 0) $parents_arr[0][$parentID]->class = 'active';
+            }
+
+            if (!isset($item->children)) $treeElem[$key]->children = [];
+
+            if (isset($parents_arr[$key])) {
+                $treeElem[$key]->class_submenu = 'submenu dropdown';
+                $treeElem[$key]->class_dropdown_toggle = 'dropdown-toggle';
+                $treeElem[$key]->children = $parents_arr[$key];
+                $this->generateElemTree($treeElem[$key]->children, $parents_arr);
+            }
         }
     }
 

@@ -12,7 +12,7 @@ class AdminJob {
             register_taxonomy( 'teg_job', [ 'job' ], [
                 'label'             => '', // определяется параметром $labels->name
                 'labels'            => [
-                    'name'              => 'Рубрики',
+                    'name'              => 'Сфера деятельности',
                     'singular_name'     => 'Рубрика',
                     'search_items'      => 'Найти рубрику',
                     'all_items'         => 'Все рубрики',
@@ -21,9 +21,9 @@ class AdminJob {
                     'parent_item_colon' => 'Родительская рубрика:',
                     'edit_item'         => 'Править рубрику',
                     'update_item'       => 'Обновить рубрику',
-                    'add_new_item'      => 'Добавить новую рубрику',
+                    'add_new_item'      => 'Добавить новую сферу деятельности',
                     'new_item_name'     => 'Имя новой рубрики',
-                    'menu_name'         => 'Рубрики',
+                    'menu_name'         => 'Сфера деятельности',
                     'back_to_items'     => '← Назад',
                 ],
                 'description'           => '', // описание таксономии
@@ -73,7 +73,7 @@ class AdminJob {
                 'has_archive'        => true,
                 'hierarchical'       => false,
                 'menu_position'      => null,
-                'supports'           => array('title','editor','author','thumbnail','excerpt','comments','trackbacks')
+                'supports'           => array('title','editor', 'thumbnail')
             ) );
         }
         

@@ -12,7 +12,7 @@ class AdminFAQ {
         function register_group_post_type_faq() {
             
             // список параметров: wp-kama.ru/function/get_taxonomy_labels
-            register_taxonomy( 'teg_faq', [ 'faq' ], [
+            register_taxonomy( 'tag_faq', [ 'faq' ], [
                 'label'                 => '', // определяется параметром $labels->name
                 'labels'                => [
                     'name'              => 'Часто задаваемые вопросы',
@@ -83,7 +83,7 @@ class AdminFAQ {
         }
         add_action( 'init', 'register_group_post_type_faq' );
         function wpschool_register_taxonomy_faq() {
-            register_taxonomy_for_object_type( 'teg_faq', 'faq' );
+            register_taxonomy_for_object_type( 'tag_faq', 'faq' );
         }
         add_action( 'init', 'wpschool_register_taxonomy_faq' );
     }

@@ -13,6 +13,7 @@ class SettingsAdminPanel {
         new AdminVideo();
         new AdminFAQ();
         new AdminJob();
+        new AdminForm7();
     }
 
 }

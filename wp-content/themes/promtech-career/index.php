@@ -9,7 +9,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package promtech
+ * @package promtech-career
  */
 
 get_header();
