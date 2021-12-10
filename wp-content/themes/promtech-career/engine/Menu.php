@@ -9,7 +9,7 @@ class Menu extends ModaMenu {
     {   
         // удаляем все что между ? и =, нужно для того чтобы очистить ссылку от гэт параметра, чтобы в методе header_menu могли сравнивать ссылки
         $this->current_url = (preg_match("/\\?.+\\=/m", get_permalink())) ? preg_replace("/\\?.+\\=/m", "", get_permalink())."/" :  get_permalink();
-        $this->$initMethod($param);
+        if(!empty($initMethod)) $this->$initMethod($param);
     }
 
     public function getMenu($name) 

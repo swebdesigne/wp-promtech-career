@@ -8,7 +8,7 @@ class Job extends ModalJob {
 
     public function __construct($initMethod, $param)
     {
-        $this->$initMethod($param);
+        if(!empty($initMethod)) $this->$initMethod($param);
     }
 
     public function getJob($name) 

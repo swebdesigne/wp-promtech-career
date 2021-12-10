@@ -5,7 +5,7 @@ class Slider extends ModalSlider {
 
     public function __construct($initMethod, $param)
     {
-        $this->$initMethod($param);
+        if(!empty($initMethod)) $this->$initMethod($param);
     }
 
     public function getSlider($name) 
