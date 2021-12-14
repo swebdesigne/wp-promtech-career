@@ -1,5 +1,5 @@
 <nav class="main-menu">
-	<ul class="nav">
+	<ul class="">
         <?php foreach($args as $arg) : ?>
 		<li class="nav-item <?= $arg->class_submenu; ?>">
 			<a class="main-menu-item nav-link <?= $arg->class; ?> <?= $arg->class_dropdown_toggle; ?>" 

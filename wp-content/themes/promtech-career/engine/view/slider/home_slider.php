@@ -3,22 +3,22 @@
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <a href="" class="hidden-logo">
-                    <img src="images/img/index/dkz.svg" alt="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/img/index/dkz.svg" alt="">
                 </a>
                 <a href="" class="hidden-logo">
-                    <img src="images/img/index/dzkt.svg" alt="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/img/index/dzkt.svg" alt="">
                 </a>
                 <a href="" class="hidden-logo">
-                    <img src="images/img/index/kzck.svg" alt="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/img/index/kzck.svg" alt="">
                 </a>
                 <a href="" class="hidden-logo">
-                    <img src="images/img/index/promtex.svg" alt="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/img/index/promtex.svg" alt="">
                 </a>
                 <a href="" class="hidden-logo">
-                    <img src="images/img/index/promtex_career.svg" alt="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/img/index/promtex_career.svg" alt="">
                 </a>
                 <a href="" class="hidden-logo">
-                    <img src="images/img/index/ps.svg" alt="">
+                    <img src="<?= get_template_directory_uri(); ?>/assets/img/index/ps.svg" alt="">
                 </a>
             </div>
         </div>
@@ -49,4 +49,3 @@
     </div>
     <div class="slider-bg cloud"></div>
 </section>
-<!-- md($args); -->

@@ -1,3 +1,7 @@
+<?php 
+	$main = new Main(); 
+	$contacts = $main->init("Contacts", '', ''); 
+?>
 </main>
 	</div> <!-- .content -->
 	<footer class="footer">
@@ -7,16 +11,16 @@
 				<div class="footer-col col-politics">
 					<div class="footer-col-top">
 						<a href="#" class="footer-logo">
-							<img src="images/img/index/promtex_career.svg" alt="">
+							<img src="<?= get_template_directory_uri(); ?>/assets/img/index/promtex_career.svg" alt="">
 						</a>
 						<a href="" class="footer-logo">
-							<img src="images/img/index/aero.svg" alt="">
+							<img src="<?= get_template_directory_uri(); ?>/assets/img/index/aero.svg" alt="">
 						</a>
 					</div>
 					<div class="footer-col-bottom">
 						<div class="copyright">
 							<div class="copy">
-								<p>Корпорация "Промтех" | &copy; 2021</p>
+								<p>Корпорация "Промтех" | &copy; <?= date("Y"); ?></p>
 							</div>
 							<div class="politics">
 								<a href="#">Политика конфиденциальности</a>
@@ -32,24 +36,25 @@
 							<span class="footer-icon icon-phone"></span>
 							<div class="footer-contact d-flex flex-column">
 								<b>Телефоны</b>
-								<a href="tel:78002008589">+7 (800) 200-85-89</a>
-								<a href="tel:79254060114">+7 (925) 406-01-14</a>
-								<a href="tel:79254061180">+7 (925) 406-11-80</a>
+								<?php foreach($contacts->getPhone() as $phone) : ?>
+								<a href="tel:<?= Tools::clearPhone($phone); ?>"><?= $phone; ?></a>
+								<?php endforeach; ?>
 							</div>
 						</li>
 						<li class="d-flex">
 							<span class="footer-icon icon-envelope"></span>
 							<div class="footer-contact d-flex flex-column">
 								<b>Электронная почта:</b>
-								<a href="mailto:hh@aerospace-systems.ru">hh@aerospace-systems.ru</a>
-								<a href="mailto:hh@promtech-dubna.ru">hh@promtech-dubna.ru</a>
+								<?php foreach($contacts->getMail() as $mail) : ?>
+								<a href="mailto:<?= $mail; ?>"><?= $mail; ?></a>
+								<?php endforeach; ?>
 							</div>
 						</li>
 						<li class="d-flex">
 							<span class="footer-icon icon-map"></span>
 							<div class="footer-contact d-flex flex-column">
 								<b>Адрес:</b>
-								<p>141983 Московская область Дубна ул. Программистов д. 4</p>
+								<p><?= $contacts->getAddress(); ?></p>
 							</div>
 						</li>
 					</ul>
@@ -59,6 +64,34 @@
 				<div class="footer-col col-subscribe">
 					<!-- require("engine/templates/mailing.php"); ?>
 						require("engine/templates/socials.php"); ?> -->
+					<section class="subscribe">
+						<h4>Подписаться на рассылку новых вакансий</h4>
+						<div class="subscribe-form">
+							<form action="">
+								<div class="subscribe-row">
+									<input type="text" placeholder="Ваш e-mail" class="subscribe-input">
+									<input type="submit" value="Подписаться" class="btn subscribe-btn orange-btn">
+								</div>
+							</form>
+						</div>
+					</section>
+					<section class="socials">
+						<h4>Мы в соцсетях</h4>
+						<div class="socials-list">
+							<a href="" class="me-3 social">
+								<span class="icon-insta"></span>
+							</a>
+							<a href="" class="me-3 social">
+								<span class="icon-fb"></span>
+							</a>
+							<a href="" class="me-3 social">
+								<span class="icon-vk"></span>
+							</a>
+							<a href="" class="me-3 social">
+								<span class="icon-ok"></span>
+							</a>
+						</div>
+					</section>
 				</div>
 			</div>
 		</div>

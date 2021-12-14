@@ -27,5 +27,5 @@ class Slider extends ModalSlider {
         wp_reset_postdata();
     }
     
-    public function view($tamplate) { Tools::view($this->dir_template.$tamplate, $this->job); }
+    public function view($tamplate) { Tools::view($this->dir_template.$tamplate, $this->slider); }
 }

@@ -53,8 +53,6 @@ class Menu extends ModaMenu {
         $this->menu = $parents_arr[0];
         $this->generateElemTree($this->menu, $parents_arr);
     }
-// Стажировки и практики
-
 
    /**
      * метод подменю для главного меню в шапке
