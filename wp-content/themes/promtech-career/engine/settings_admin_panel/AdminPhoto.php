@@ -13,7 +13,7 @@ class AdminPhoto {
             register_taxonomy( 'photo_tag', [ 'photo' ], [
                 'label'                 => '', // определяется параметром $labels->name
                 'labels'                => [
-                    'name'              => 'Фотографии',
+                    'name'              => 'Теги',
                     'singular_name'     => 'Фотографии',
                     'search_items'      => 'Найти Фотографию',
                     'all_items'         => 'Все регионы',
@@ -73,7 +73,7 @@ class AdminPhoto {
             'rewrite'             => false,
             'has_archive'         => false,
             'query_var'           => true,
-            'supports'            => array('title')
+            'supports'            => array('title', 'thumbnail')
             ) );
         }
         add_action( 'init', 'register_group_post_type_photo' );

@@ -26,7 +26,8 @@ $(function() {
         speed: 500,
         dots: false,
         arrows: false,
-        autoplay: false
+        autoplay: false,
+        adaptiveHeight: true
     })
     $("#newsVideo").slick({
         slidesToShow: 1,
@@ -34,7 +35,30 @@ $(function() {
         speed: 500,
         dots: false,
         arrows: false,
-        autoplay: false
+        autoplay: false,
+        adaptiveHeight: true
+    })
+    $("#corporationSlider").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: false,
+        speed: 500,
+        dots: false,
+        arrows: false,
+        autoplay: false,
+        adaptiveHeight: true,
+        variableWidth: true,
+        centerPadding: '0',
+        centerMode: true,
+        responsive: [
+            {
+                breakpoint: 576,
+                settings: {
+                    centerPadding: '0',
+                    variableWidth: false,
+                }
+            }
+        ]
     })
 	$('.chart').easyPieChart({
         barColor: "#EF7F1A",
@@ -120,3 +144,10 @@ function slickPrev(slider) {
 function slickNext(slider) {
     $(slider).slick('slickNext');
 }
+$(".fb-img, .fb-form").fancybox({
+    helpers: {
+        overlay: {
+            locked: false
+        }
+    },
+});

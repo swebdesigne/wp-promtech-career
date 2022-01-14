@@ -8,6 +8,11 @@
             </a>
             <?php if(!empty($arg->children)) : ?>
                 <div class="dropdown-menu">
+                    <!-- Добавляем ссылку на все вакансии -->
+                    <?php if($arg->ID == 35) : ?>
+                    <a href="<?= get_page_link($arg->ID); ?>" class="dropdown-item submenu-item ">Все вакансии</a>
+                    <?php endif; ?>
+
                     <?php foreach($arg->children as $subMenu) : ?>
                     <a href="<?= $subMenu->link; ?>" class="dropdown-item submenu-item <?= $subMenu->class; ?>"><?= $subMenu->post_title; ?></a>
                     <?php endforeach; ?>

@@ -17,8 +17,8 @@
 				</div>
 				<div class="col-6 col-lg-3 mb-5 mb-lg-0">
 					<div class="digit-item">
-						<div class="digit-animation chart" data-percent="0"><span>3000</span></div>
-						<div class="digit-title">квалифицированных Сотрудников</div>
+						<div class="digit-animation chart" data-percent="0"><span>3000+</span></div>
+						<div class="digit-title">профессиональных Сотрудников</div>
 					</div>
 				</div>
 				<div class="col-6 col-lg-3">

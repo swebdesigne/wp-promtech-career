@@ -4,6 +4,7 @@ class AdminForm7 {
     public function __construct()
     {
         $this->init();
+        $this->settings();
     }
     
     private function init() {
@@ -35,5 +36,23 @@ class AdminForm7 {
             $html .= '</select>';
             return $html;
         }
+    }
+    
+    private function settings() {
+        add_filter('wpcf7_form_elements', function($content) {
+            // $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control-wrap(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+             $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-list-item(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+             // $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-list-item-label(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+             // $content = preg_replace('/<(span).*?class="\s*(?:.*\s)?wpcf7-form-control wpcf7-acceptance optional(?:\s[^"]+)?\s*"[^\>]*>(.*)<\/\1>/i', '\2', $content);
+             $content = str_replace('<br />', '', $content);
+         
+             $content = strip_tags($content, '<div><input><select><option><h4><label><textarea><span>');
+         
+             // echo("//!!");
+             // die($content);
+             $content = preg_replace('|<p[^>]*?>(.*?)</p>|', '\1', $content);
+                 
+             return $content;
+         });
     }
 }

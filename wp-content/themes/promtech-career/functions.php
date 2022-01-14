@@ -121,22 +121,26 @@ add_action( 'widgets_init', 'promtech_widgets_init' );
  * Enqueue scripts and styles.
  */
 function promtech_scripts() {
+	/* ======================================== ПОДКЛЮЧАЕМ СТИЛИ ======================================== */
+	
 	// fonts
-	wp_enqueue_style( 'promtech-font-style', get_template_directory_uri() . '/assets/fonts/font.css', array(), '20151215', true );
+	wp_enqueue_style( 'promtech-font-style', get_template_directory_uri() . '/assets/fonts/font.css', array(), '20151215', false );
 	wp_enqueue_style( 'promtech-icon', get_template_directory_uri() . '/assets/icon/style.css', array(), '20151215', false );
 	
 	// slick slider
-	wp_enqueue_style( 'promtech-slick_slider-style', get_template_directory_uri() . '/assets/libs/slick/slick.min.css', array(), '20151215', true );
-	wp_enqueue_style( 'promtech-slick_slider-theme', get_template_directory_uri() . '/assets/libs/slick/slick-theme.min.css', array(), '20151215', true );
+	wp_enqueue_style( 'promtech-slick_slider-style', get_template_directory_uri() . '/assets/libs/slick/slick.min.css', array(), '20151215', false );
+	wp_enqueue_style( 'promtech-slick_slider-theme', get_template_directory_uri() . '/assets/libs/slick/slick-theme.min.css', array(), '20151215', false );
 	
 	// fancybox
-	wp_enqueue_style( 'promtech-fancybox-style', get_template_directory_uri() . '/assets/libs/fancybox/jquery.fancybox.min.css', array(), '20151215', true );
+	wp_enqueue_style( 'promtech-fancybox-style', get_template_directory_uri() . '/assets/libs/fancybox/jquery.fancybox.min.css', array(), '20151215', false );
 
 	wp_enqueue_style( 'promtech-bootstrap', get_template_directory_uri() . '/assets/libs/bootstrap/5.1.3/bootstrap.min.css', array(), '20151215', false );
 
 	wp_enqueue_style( 'promtech-select', get_template_directory_uri() . '/assets/libs/select2.min.css', array(), '20151215', false );
 	
 	wp_enqueue_style( 'promtech-style', get_stylesheet_uri() );
+
+	/* ======================================== ПОДКЛЮЧАЕМ СКРИПТЫ ======================================== */
 
     wp_enqueue_script( 'promtech-jquery', get_template_directory_uri() . '/assets/libs/jquery-3.3.1.min.js', array(), false, true );
 
@@ -157,6 +161,7 @@ function promtech_scripts() {
 	wp_enqueue_script( 'promtech-easypiechart', get_template_directory_uri() . '/assets/libs/easy-pie-chart/jquery.easypiechart.min.js', array(), false, true );
 	
 	wp_enqueue_script( 'promtech-main', get_template_directory_uri() . '/assets/js/main.js', array(), false, true );
+	wp_enqueue_script( 'promtech-main-new', get_template_directory_uri() . '/assets/js/main_new.js', array(), false, true );
 	
 	wp_enqueue_script( 'promtech-share', 'https://yastatic.net/share2/share.js', array(), false, true );
 	
@@ -213,9 +218,12 @@ function filter_plugin_updates( $value ) {
 add_action( 'after_setup_theme', 'true_add_image_size' );
  
 function true_add_image_size() {
-	add_image_size( 'post-photo', 680, 340, true );
-	add_image_size( 'post-news-big', 920, 460, true );
-	add_image_size( 'post-news-small', 560, 340, true );
+	// add_image_size( 'post-photo', 680, 340, true );
+	// add_image_size( 'post-news-big', 920, 460, true );
+	// add_image_size( 'post-news-small', 560, 340, true );
+	add_image_size( 'post-photo', 680, 0, true );
+	add_image_size( 'post-news-big', 920, 0, true );
+	add_image_size( 'post-news-small', 560, 0, true );
 }
 
 function the_post_thumbnail_src($post_id, $size) {
@@ -223,6 +231,21 @@ function the_post_thumbnail_src($post_id, $size) {
     echo $thumb['0'];
 }
 
+add_action( 'wp_footer', 'mycustom_wp_form' );
+  
+function mycustom_wp_form() {
+?>
+<script type="text/javascript">
+document.addEventListener( 'wpcf7mailsent', function( event ) {
+	if ( '442' == event.detail.contactFormId ) {
+		$('#wpcf7-f442-o1').find('.question-form-container').css('display', 'none')
+    }
+});
+</script>
+<?php
+}
+
+// Tools::mdd(get_post_type());
 // wp_get_attachment_image( 651, 'medium');
 // $attach_id = get_post_thumbnail_id(355);
 // $ex = wp_get_attachment_image( $attach_id, 'medium');

@@ -8,6 +8,36 @@ class AdminArticle {
 
     private function init() {
         add_filter('post_type_labels_post', 'rename_posts_labels');
+        add_action('init', 'unregister_taxonomy_post_tag');
+
+        
+        add_filter( 'taxonomy_labels_'.'category', 'change_labels_category' );
+        function change_labels_category( $labels ) {
+
+            // Запишем лейблы для изменения в виде массива для удобства
+            $my_labels = array(
+                'name'                  => 'Теги',
+                'singular_name'         => 'Тег',
+                'search_items'          => 'Поиск тегов',
+                'all_items'             => 'Все теги',
+                'parent_item'           => 'Родительский тег',
+                'parent_item_colon'     => 'Родительский тег:',
+                'edit_item'             => 'Изменить тег',
+                'view_item'             => 'Просмотреть тег',
+                'update_item'           => 'Обновить тег',
+                'add_new_item'          => 'Добавить новый тег',
+                'new_item_name'         => 'Название нового тега',
+                'not_found'             => 'Теги не найдены.',
+                'no_terms'              => 'Тегов нет',
+                'items_list_navigation' => 'Навигация по списку типов',
+                'items_list'            => 'Список тегов',
+                'back_to_items'         => '← Назад к тегам',
+                'menu_name'             => 'Теги',
+            );
+
+            return $my_labels;
+        }
+
         function rename_posts_labels( $labels ){
             // заменять автоматически не пойдет например заменили: Запись = новость, а в тесте получится так "Просмотреть новость"
 
@@ -69,6 +99,6 @@ class AdminArticle {
         function unregister_taxonomy_post_tag(){
             register_taxonomy('post_tag', array());
         }
-        add_action('init', 'unregister_taxonomy_post_tag');
+
     }
 }

@@ -1,6 +1,6 @@
 <?
 
-class Menu extends ModaMenu {
+class Menu extends ModalMenu {
     private $menu;
     private $current_url;
     private $dir_template = 'engine/view/menu/';
@@ -33,6 +33,7 @@ class Menu extends ModaMenu {
             $extra_sub_menu[$key]->post_parent = $idCatPosts;
             $extra_sub_menu[$key]->link = get_page_link($item->ID);
         }
+        usort($extra_sub_menu, 'sort_submenu');
         return $extra_sub_menu;
     }
 
@@ -49,9 +50,12 @@ class Menu extends ModaMenu {
         // Добавляем меню Компаний в `О корпорации`
         $category = array_merge($category, $this->extraSubMenu(new Company, 37));
 
-        foreach($category as $cat) { $parents_arr[$cat->post_parent][$cat->ID] = $cat; }   
+        foreach($category as $cat) { if ($cat->ID == 381) continue; $parents_arr[$cat->post_parent][$cat->ID] = $cat; }   
         $this->menu = $parents_arr[0];
         $this->generateElemTree($this->menu, $parents_arr);
+
+        // Сортируем меню по имени
+        foreach($this->menu as $menu) usort($menu->children, 'sort_submenu');
     }
 
    /**
@@ -81,4 +85,15 @@ class Menu extends ModaMenu {
     }
 
     public function view($tamplate) { Tools::view($this->dir_template.$tamplate, $this->menu); }
+}
+
+function sort_submenu( $a, $b ) {
+
+    $a1 = mb_strtolower($a->post_title, 'UTF-8');
+    $b1 = mb_strtolower($b->post_title, 'UTF-8'); 
+
+    return strcmp( 
+        wp_strip_all_tags( $a1 ),
+        wp_strip_all_tags( $b1 )
+    );
 }

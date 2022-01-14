@@ -30,12 +30,13 @@
                                 </li>
                             </ul>
                             <div class="question-about-links">
-                                <a href="" class="chevron-link"><span>Узнать подробнее о компании</span></a>
-                                <a href="" class="chevron-link"><span>Все компании</span></a>
+                                <a href="<?= home_url( '/' )?>o-korporatsii" class="chevron-link"><span>Узнать подробнее о компании</span></a>
+                                <!-- <a href="<?= home_url( '/' )?>o-korporatsii" class="chevron-link"><span>Все компании</span></a> -->
                             </div>
                         </div>
                     </div>
                     <div class="col-12 col-lg-6 offset-lg-1">
+                        <h4 class="fill_anketa">Заполните анкету</h4>
                        <?= $args['this']->view('fill_anketa'); ?>
                     </div>
                 </div>

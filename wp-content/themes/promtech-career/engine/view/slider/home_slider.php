@@ -1,5 +1,5 @@
 <section class="index-slider">
-    <div class="hidden-logos d-none">
+    <div class="hidden-logos">
         <div class="container">
             <div class="d-flex justify-content-between align-items-center">
                 <a href="" class="hidden-logo">
@@ -33,17 +33,19 @@
         </div>
     </div>
     <div class="slider-title">
-        <h1>ВАКАНСИИ</h1>
-        <p class="small-slogan">Стань частью корпорации <span class="orange">Промтех</span></p>
+        <h1><span>Вакансии.</span> Карьера. Возможности</h1>
+        <!-- <p class="small-slogan">Стань частью корпорации <span class="orange">Промтех</span></p> -->
         <div class="run-line">
             <ul>
                 <li>ОКБ Аэрокосмические системы</li>
-                <li>Промтех-Дубна</li>
-                <li>Дубненский кабельный завод</li>
+                <li>ПРОМТЕХ-Дубна</li>
                 <li>Дубненский завод коммутационной техники</li>
-                <li>Простех-Сервис</li>
-                <li>Промтех-Ульяновск</li>
+                <li>Дубненский кабельный завод</li>
+                <li>Промтех-Сервис</li>
                 <li>Промтех-Иркутск</li>
+                <li>Промтех-Ульяновск</li>
+                <li>Промтех-Казань</li>
+                <li>Казанский завод синтетического каучука</li>
             </ul>
         </div>
     </div>

@@ -2,6 +2,9 @@
     <div class="container">
         <ul class="careers-filter nav nav-tabs" id="careersTab" role="tablist">
             <?php foreach($args['category'] as $key => $cat) : ?>
+            <? extract($_GET);
+                if(isset($direction) && !empty($direction) && $cat->name != $direction) continue;
+            ?>
             <li class="nav-item" role="presentation">
                 <a 
                     id="careers<?= $key+1; ?>-tab" 
@@ -9,8 +12,8 @@
                     href="#careers<?= $key+1; ?>"
                     role="tab"
                     aria-controls="careers<?= $key+1; ?>" 
-                    aria-selected="false" 
-                    class="nav-link careers-filter-item">
+                    aria-selected="<? if ($key == 0){?>true<?}?>" 
+                    class="nav-link careers-filter-item <? if ($key == 0 || $cat->name == $direction){?>active<?}?>">
                     <?= $cat->name; ?>
                 </a>
             </li>
@@ -19,7 +22,8 @@
         <div class="careers-list">
             <div class="careers-tabs tab-content" class="tab-content" id="careersTabsContent">
                 <?php for ($i = 0; $i < count($args['category']); $i++) {?>
-                <div class="tab-pane fade<? if ($i == 0){?> show active <?}?>" id='careers<?=($i+1)?>' role='tabpanel' aria-labelledby='careers<?=($i+1)?>-tab'>
+                    <? if(isset($direction) && !empty($direction) && $args['category'][$i]->name != $direction) continue;?>
+                <div class="tab-pane fade<? if ($i == 0 || $args['category'][$i]->name == $direction){?> show active <?}?>" id='careers<?=($i+1)?>' role='tabpanel' aria-labelledby='careers<?=($i+1)?>-tab'>
                     <div class="row">
                         <?php foreach($args['items'] as $key => $job) : ?>
                             <?php if($args['category'][$i]->name == $job->item['name_category']) : ?>
@@ -30,7 +34,7 @@
                                             <div class="career-element-top">
                                                 <div class="career-big-img">
                                                     <a href="<?= $job->item['url']; ?>">
-                                                        <img src="<?= $job->item['news_img_url']; ?>" alt="" class="career-title-img">
+                                                        <img src="<?= (!empty($job->item['news_img_url'])) ? $job->item['news_img_url'] : get_template_directory_uri() . '/assets/img/stub440x290.jpg'; ?>" alt="<?= $job->post_title; ?>" class="career-title-img">
                                                     </a>
                                                 </div>
                                                 <div class="career-company">
@@ -62,7 +66,7 @@
                                             <div class="flex-1"></div>
                                             <div class="career-element-bottom">
                                                 <div class="d-flex career-bottom">
-                                                    <button class="btn orange-btn" data-bs-toggle="modal" data-bs-target="#exampleModalCenter">Откликнуться</button>
+                                                    <button class="btn orange-btn" data-bs-toggle="modal" data-bs-target="#modal__form">Откликнуться</button>
                                                     <a href="<?= $job->item['url']; ?>" class="link see-more">Подробнее</a>
                                                 </div>
                                             </div>
@@ -70,11 +74,12 @@
                                     </div>
                                 </div>
                             </div>
+                          
                             <? endif; ?>
                         <? endforeach; ?>
                         <div class="col-12 show-all-careers">
                             <div class="text-center">
-                                <a href="<?= home_url( '/' ); ?>vacansii/">Показать ещё вакансии</a>
+                                <a href="<?= home_url( '/' ); ?>vacansii/?direction=<?= (isset($_GET['direction']) && !empty($_GET['direction'])) ? $_GET['direction'] : $args['category'][0]->name?>">Показать ещё вакансии</a>
                             </div>
                         </div>
                     </div>

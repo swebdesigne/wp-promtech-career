@@ -10,25 +10,23 @@
 get_header();
 ?>
 
-	<div id="primary" class="content-area container">
-		<main id="main" class="site-main">
-
 		<?php
+
+		// Tools::mdd(get_post());
+
 		$dir = 'engine/view/';
 		while ( have_posts() ) :
 			the_post();
 
 			if (get_post_type() == 'job') get_template_part($dir.'job/job-details');
 			if (get_post_type() == 'brands') get_template_part($dir.'company/company-details');
+			if (get_post_type() == 'interview') get_template_part($dir.'interview/interview_detail');
+			if (get_post_type() == 'post') get_template_part($dir.'news/single_news');
 			// if (get_post_type() == 'brands') get_template_part($dir.'company/company-details');
 			// if (get_post_type() == 'brands') get_template_part( $dir.'company/company-details');
 			
 		endwhile; // End of the loop.
 		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
 <?php
 get_footer();
 // the_post_navigation();

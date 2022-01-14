@@ -1,14 +1,16 @@
 $(function() {
-    var nav = $('.small-menu');
+    var $nav = $('.small-menu');
     $('.menu-toggle').on('click', function() {
-        if(!nav.hasClass('on')) {
-            nav.addClass('on');
+        if(!$nav.hasClass('on')) {
+            console.log("123");
+            $nav.addClass('on');
         } else {
-            nav.removeClass('on');
+            console.log("1234");
+            $nav.removeClass('on');
         }
     })
     $('.menu-close').on('click', function() {
-        nav.removeClass('on');
+        $nav.removeClass('on');
     })
 
     $("#mainSlider").slick({
@@ -26,7 +28,8 @@ $(function() {
         speed: 500,
         dots: false,
         arrows: false,
-        autoplay: false
+        autoplay: false,
+        adaptiveHeight: true
     })
     $("#newsVideo").slick({
         slidesToShow: 1,
@@ -34,7 +37,30 @@ $(function() {
         speed: 500,
         dots: false,
         arrows: false,
-        autoplay: false
+        autoplay: false,
+        adaptiveHeight: true
+    })
+    $("#corporationSlider").slick({
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        infinite: false,
+        speed: 500,
+        dots: false,
+        arrows: false,
+        autoplay: false,
+        adaptiveHeight: true,
+        variableWidth: true,
+        centerPadding: '0',
+        centerMode: true,
+        responsive: [
+            {
+                breakpoint: 576,
+                settings: {
+                    centerPadding: '0',
+                    variableWidth: false,
+                }
+            }
+        ]
     })
 	$('.chart').easyPieChart({
         barColor: "#EF7F1A",
@@ -46,7 +72,7 @@ $(function() {
     if ($("#digitBlock").length > 0) {
         if (window.document.documentMode) {
             $('.chart').each(function() {
-                $(this).data('easyPieChart').update(70);
+                $(this).data('easyPieChart').update(100);
             });
         } else {    
             var options = {
@@ -58,7 +84,7 @@ $(function() {
                     var entry = entries[idx];
                     if (entry.isIntersecting) {
                         $('.chart').each(function() {
-                            $(this).data('easyPieChart').update(70);
+                            $(this).data('easyPieChart').update(100);
                         });
                     }
                 }
@@ -85,10 +111,19 @@ $(function() {
             $(".header-logos-close").addClass("show");
         }
     })
-    $(".custom-select").each(function() {
-        var $Id = $(this).attr('id');
-        $("#"+$Id).select2();
-    })
+
+    function customSelect(select) {
+        select.each(function() {
+            var $Id = $(this).attr('id');
+            $("#"+$Id).select2();
+        })
+    }
+    customSelect($("#citySelect"));
+    customSelect($("#citySearch"));
+    customSelect($("#citySelect_2"));
+    customSelect($("#companySelect"));
+    customSelect($("#directionSelect"));
+
     $(".vacancies-form-search .search-submit").on('click', function() {
         $(".vacancies-form-search").submit();
     })
@@ -120,3 +155,64 @@ function slickPrev(slider) {
 function slickNext(slider) {
     $(slider).slick('slickNext');
 }
+$(".fb-img, .fb-form").fancybox({
+    helpers: {
+        overlay: {
+            locked: false
+        }
+    },
+});
+
+$(document).on("change", ".custom-checkbox", function(){
+
+    if ($(this).is(':checked')) {
+        
+        $(this).parent().find('label').addClass('active');
+    } else {
+        $(this).parent().find('label').removeClass('active');
+    }
+})
+
+$('.nav-item').on('click', function() {
+    $txt = $(this).find('a').text().trim();
+    $href = $('.text-center > a').attr('href');
+    $('.text-center > a').attr('href', "https://server2.webisgroup.ru/promtech-career.ru/vacansii/?direction="+$txt) 
+})
+
+$('.career-bottom > button').on('click', function() {
+    $txt = $(this).closest('.careers-element-container').find('.career-middle-title > a').text().trim()
+    $('input#vacansiya').val($txt)
+})
+
+$('.modal-header .icon-close').on('click', function() {
+    $('.custom-checkbox').prop('checked', false);
+    $('.custom-checkbox').closest('.form-item').find('label').removeClass('active')
+})
+
+$('.modal').on('click', function(e) {
+    var modal = $(".modal-dialog ");
+    if (!modal.is(e.target) && modal.has(e.target).length === 0){
+        $(".modal-dialog ").find($('input, textarea, select')).val('');
+        $(".modal-dialog ").find($('.custom-input-file__click')).html('Резюме <span class="icon-upload"></span>');
+    }
+  });
+
+$("#citySelect").on('click', function() {
+    $(this).select2();
+})
+
+$("#citySelect_2").on('click', function() {
+    $(this).select2();
+})
+
+function Resume(input) {
+    input.on('change', function() {
+        if (this.files[0]) // если выбрали файл
+        $(this).parent().siblings($('.custom-input-file__click')).text(this.files[0].name + ' загружено');
+    })
+}
+
+Resume($('#upload-photomodalka'));
+Resume($('#upload-photoanketa'));
+
+

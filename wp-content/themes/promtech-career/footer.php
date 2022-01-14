@@ -1,7 +1,50 @@
 <?php 
 	$main = new Main(); 
+	$main->init("Company", '', '');
+	$main->init("City", '', '');
 	$contacts = $main->init("Contacts", '', ''); 
 ?>
+
+<!-- Modals forms START -->
+<div class="modal fade" id="modal__form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Заполните анкету</h5>
+            <button type="button" class="icon-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <?php echo do_shortcode('[contact-form-7 id="442" title="Заполните анкету модалка"]'); ?>
+        </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="entier__form" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">Заполните заявку</h5>
+            <button type="button" class="icon-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <?php echo do_shortcode('[contact-form-7 id="478" title="заявка на целевой договор модалка"]'); ?>
+        </div>
+        </div>
+    </div>
+</div>
+<!-- Modals forms END -->
+
+<!-- $main->init('Form', 'form', '')->view('modal_fill_anketa'); ?> -->
+<?php if( esc_url( home_url( '/' ) ) == get_permalink() || basename(get_permalink()) == 'vacansii' || basename(get_permalink()) == 'sport') : ?>
+<section class="slogan">
+	<div class="container">
+		<div class="text-center">
+			<p class="slogan-text">Давай создавать будущее <span class="slogan-word orange">вместе!</span></p>
+		</div>
+	</div>
+</section>
+<?php endif; ?>
 </main>
 	</div> <!-- .content -->
 	<footer class="footer">
@@ -13,9 +56,9 @@
 						<a href="#" class="footer-logo">
 							<img src="<?= get_template_directory_uri(); ?>/assets/img/index/promtex_career.svg" alt="">
 						</a>
-						<a href="" class="footer-logo">
+						<!-- <a href="" class="footer-logo">
 							<img src="<?= get_template_directory_uri(); ?>/assets/img/index/aero.svg" alt="">
-						</a>
+						</a> -->
 					</div>
 					<div class="footer-col-bottom">
 						<div class="copyright">
@@ -23,7 +66,7 @@
 								<p>Корпорация "Промтех" | &copy; <?= date("Y"); ?></p>
 							</div>
 							<div class="politics">
-								<a href="#">Политика конфиденциальности</a>
+								<a href="<?= home_url( '/' )?>legal">Политика конфиденциальности</a>
 							</div>
 						</div>
 					</div>
@@ -67,12 +110,9 @@
 					<section class="subscribe">
 						<h4>Подписаться на рассылку новых вакансий</h4>
 						<div class="subscribe-form">
-							<form action="">
-								<div class="subscribe-row">
-									<input type="text" placeholder="Ваш e-mail" class="subscribe-input">
-									<input type="submit" value="Подписаться" class="btn subscribe-btn orange-btn">
-								</div>
-							</form>
+							<div class="subscribe-row">
+							<?php echo do_shortcode('[contact-form-7 id="276" title="Подписаться"]'); ?>
+							</div>
 						</div>
 					</section>
 					<section class="socials">
@@ -100,6 +140,22 @@
 </div> <!-- .wrapper -->
 
 <?php wp_footer(); ?>
-
+<script src="js/jquery-1.9.1.min.js"></script>
+<script src="js/jquery.fancybox.pack.js"></script>
+<script type="text/javascript" src="https://vk.com/js/api/openapi.js?169"></script>
+<script type="text/javascript">VK.Widgets.Group("vk_groups", {mode: 4, wide: 1, width: "auto", height: "400", color3: 'FF8300'}, 176789683);</script>
+<script type="text/javascript">
+            $(document).ready(function() {
+				$(".various").fancybox({
+					maxWidth : 800,
+					maxHeight : 600,
+					fitToView : true,
+					autoSize : true,
+					closeClick : false,
+					openEffect : 'none',
+					closeEffect : 'none'
+				});
+			});
+</script>
 </body>
 </html>

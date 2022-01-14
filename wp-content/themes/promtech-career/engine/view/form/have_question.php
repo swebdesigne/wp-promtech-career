@@ -6,5 +6,5 @@
         <span class="faq-icon icon-telegram me-1 me-lg-2"><span class="path1"></span><span class="path2"></span></span>
         <a href="tel:<?= Tools::clearPhone($args['contacts']->getPhone()[0]); ?>"><?= $args['contacts']->getPhone()[0]; ?></a>
     </div>
-    <a href="#" class="btn orange-btn">Задать вопрос</a>
+    <a href="<?= home_url( '/' )?>contacts" class="btn orange-btn">Задать вопрос</a>
 </div>
